@@ -6,6 +6,4 @@ bs4
 requests
 sub
 datetime
-json
-json_util
 matplotlib
