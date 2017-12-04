@@ -1,0 +1,12 @@
+pandas
+panas.io.json
+Flask
+pymongo
+bs4
+requests
+decimal
+re
+datetime
+json
+matplotlib
+
