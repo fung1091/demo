@@ -4,7 +4,6 @@ pymongo
 requests
 bs4
 requests
-Decimal
 sub
 datetime
 json
