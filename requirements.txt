@@ -1,11 +1,12 @@
 pandas
 Flask
 pymongo
+requests
 bs4
 requests
-decimal
-re
+Decimal
+sub
 datetime
 json
+json_util
 matplotlib
-
