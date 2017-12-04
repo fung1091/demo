@@ -1,0 +1,65 @@
+{% extends "mainpage.html" %}
+{% block body %}
+<form method=post action="{{ url_for('buyhtml') }}">
+
+<p>
+{% if result == None and message != None %}
+<h4> "{{message}}"</h4>
+{% endif %}
+</p>
+
+<p>
+{% if result != None %}
+<h4>Price of stock: "{{currentprice}}"</h4>
+{% endif %}
+</p>
+<p>
+{% if result != None %}
+<h4>This value was inserted into your blotter"{{newrecord}}"</h4>
+{% endif %}
+</p>
+
+<h4> Please enter your inputs</h4>
+<table>
+  <tr widht = 100%>
+    <td width=50%>
+      {% for field in form %}
+        <dt>{{ field.name }}
+        <dd>{{ field|safe }} {{field.label }}
+        {% if field.errors %}
+          <ul class=errors>
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}</ul>
+        {% endif %}</dd>
+      {% endfor %}
+    </td>
+    <td width=50%>
+      <p><input type=submit name="chart" value="Price ">
+      <p><input type=submit name="chart" value="Buy">
+      </p>
+    </td>
+  </tr>
+</table>
+</form>
+
+
+{% if result != None %}
+<table>
+
+  <tr>
+    <td>
+      {% if result != None %}
+      <img src="{{result}}">
+      {% endif %}
+    </td>
+    <td>
+      {% if result != None %}
+      {{analytic | safe}}
+      {% endif %}
+    </td>
+  <tr>
+</table>
+{% endif %}
+
+{% endblock %}

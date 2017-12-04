@@ -1,0 +1,13 @@
+{% extends "mainpage.html" %}
+{% block content %}
+<p>
+{% if blotters == None %}
+<h4 >Message:"{{message}}"</h4>
+{% endif %}
+</p>
+<p>
+{% if blotters != None %}
+<h3 >"{{message}}"</h3>
+{{ blotters | safe}}
+{% endif %}
+{% endblock %}

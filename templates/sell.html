@@ -1,0 +1,59 @@
+{% extends "mainpage.html" %}
+{% block body %}
+
+<p>
+{% if result == None %}
+<h4>You have no stock to sell</h4>
+{% endif %}
+</p>
+
+<p>
+{% if result != None %}
+<h4>Price of stock: "{{currentprice}}"</h4>
+{% endif %}
+</p>
+<p>
+{% if result != None %}
+<h4>This value was inserted into your blotter"{{newrecord}}"</h4>
+{% endif %}
+</p>
+
+<p>
+{% if result != None %}
+<h4>This value was inserted into your blotter"{{record}}"</h4>
+{% endif %}
+</p>
+
+
+<h4>Give input:</h4>
+<form method=post action="{{ url_for('sellhtml') }}">
+
+  {% for field in form %}
+    <dt>{{ field.name }}
+    <dd>{{ field|safe }} {{field.label }}
+    {% if field.errors %}
+      <ul class=errors>
+      {% for error in field.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}</ul>
+    {% endif %}</dd>
+  {% endfor %}
+<p><input type=submit name="chart" value="Updated price">
+<p><input type=submit name="chart" value="Sell"></p>
+</form>
+
+
+
+{% if result != None %}
+<table>
+  <td width=100%>
+    <p>
+    {% if result != None %}
+    <h4>Last 90 Days:</h4>
+    <img src="{{result}}">
+    {% endif %}
+  </td>
+</table>
+{% endif %}
+
+{% endblock %}

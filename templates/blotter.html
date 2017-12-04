@@ -1,0 +1,37 @@
+{% extends "mainpage.html" %}
+{% block body %}
+<p>
+{% if blotters == None %}
+<h3 >Message:"{{message}}"</h3>
+{% endif %}
+</p>
+
+{% if blotters != None %}
+<div span="right">
+<h3 >"{{message}}"</h3>
+<table>
+  <tr>
+  	<th>Side</th>
+  	<th>Ticker</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  	<th>Date</th>
+    <th>Cost</th>
+    <th>Cash Balance</th>
+  </tr>
+  {% for blotter in blotters|sort(attribute='Date', reverse = True) %}
+	<tr>
+		<td>{{ blotter["Side"] }}</td>
+		<td>{{ blotter["Ticker"] }}</td>
+    <td>{{ blotter["Qty"] }}</td>
+    <td>{{ blotter["Price"] }}</td>
+		<td>{{ blotter["Date"] }}</td>
+    <td>{{ blotter["Cost"] }}</td>
+    <td>{{ blotter["Bal"] }}</td>
+	</tr>
+  {% endfor %}
+</table>
+</div>
+{% endif %}
+
+{% endblock %}
