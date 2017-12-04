@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+     <title>{% block title %}{% endblock %}Trader</title>
+    {% endblock %}
+
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan = 6s>
+              Please select the following trading function:
+        </td>
+      </tr>
+      <tr>
+      <td>
+        <th>
+          <form method=post action="{{ url_for('buyhtml') }}">
+            <p><input type=submit value="Buy">
+          </form>
+        </th>
+        <th>
+          <form method=post action="{{ url_for('sellhtml') }}">
+            <p><input type=submit value="Sell">
+          </form>
+        </th>
+        <th>
+          <form method=post action="{{ url_for('blotter') }}">
+            <p><input type=submit value="Blotter">
+          </form>
+        </th>
+        <th>
+          <form method=post action="{{ url_for('pls') }}">
+            <p><input type=submit value="P/L">
+          </form>
+        </th>
+      </td>
+    </tr>
+    </table>
+    {% block body %}{% endblock %}
+    <div id="content">{% block content %}{% endblock %}</div>
+
+  </body>
+</html>
