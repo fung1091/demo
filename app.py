@@ -3,11 +3,9 @@ __author__ = 'voyo'
 # -*- coding: utf-8 -*-
 """
 Created on Mon Sep 25 12:36:39 2017
-
 @author: Jim Lung
 """
 import pandas as ps
-from pandas.io.json import json_normalize
 from flask import Flask, render_template, request, url_for, redirect
 import pymongo
 import requests
@@ -267,7 +265,7 @@ def index():
 @app.route('/buy', methods=['GET', 'POST'])
 def buyhtml():
     dbsort = db.blotter.find().sort('Date', -1)
-    e = ps.DataFrame(json_normalize(json.loads(json_util.dumps(dbsort))))
+    e = ps.DataFrame(json.loads(json_util.dumps(dbsort)))
     df2 = companieslist()
     df1 = df2.reset_index()[['index', 'Symbol']].values.tolist()
     form = request.form
@@ -334,7 +332,7 @@ def buyhtml():
 @app.route('/sell', methods=['GET', 'POST'])
 def sellhtml():
     dbsort = db.blotter.find().sort('Date', -1)
-    e = ps.DataFrame(json_normalize(json.loads(json_util.dumps(dbsort))))
+    e = ps.DataFrame(json.loads(json_util.dumps(dbsort)))
     df2 = companieslist()
     df1 = df2.reset_index()[['index', 'Symbol']].values.tolist()
     form = request.form
@@ -377,7 +375,7 @@ def sellhtml():
 @app.route('/blotter', methods=['GET', 'POST'])
 def blotter():
     dbsort = db.blotter.find().sort('Date', -1)
-    e = ps.DataFrame(json_normalize(json.loads(json_util.dumps(dbsort))))
+    e = ps.DataFrame(json.loads(json_util.dumps(dbsort)))
     if e.empty == True:
         message = "No Trading record"
         blotterstable = None
@@ -390,7 +388,7 @@ def blotter():
 @app.route('/pls', methods=['GET', 'POST'])
 def pls():
     dbsort = db.blotter.find()
-    e = ps.DataFrame(json_normalize(json.loads(json_util.dumps(dbsort))))
+    e = ps.DataFrame(json.loads(json_util.dumps(dbsort)))
     if e.empty == True:
         message = "No trading record"
         traderecord = None
