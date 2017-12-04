@@ -1,5 +1,4 @@
 pandas
-panas.io.json
 Flask
 pymongo
 bs4
